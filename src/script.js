@@ -1,19 +1,26 @@
-const personalImageIcon = document.querySelectorAll('.personal-image-icon svg')
+// animate slide
+const animateSlide = () => {
+  const personalImageIcon = document.querySelectorAll('.personal-image-icon svg')
 
-const automaticSlide = () => {
   setInterval(() => {
-    personalImageIcon.forEach((icon, index) => {
-      // Get the current active class (e.g., 'active-1')
+    personalImageIcon.forEach((icon) => {
       let activeClass = icon.classList.value.split('-')[1] 
+      let newActiveClass = 'active-' + ((parseInt(activeClass) % personalImageIcon.length) + 1)
 
-      // Calculate the new active class based on the index
-      let newActiveClass = 'active-' + ((parseInt(activeClass) % 3) + 1)
-
-      // Remove the old active class and add the new one
       icon.classList.remove(`active-${activeClass}`) 
       icon.classList.add(newActiveClass)
     })
-  }, 3000)
+  }, 5000)
 }
 
-automaticSlide()
+animateSlide()
+
+// dynamic scroll
+const targetElement = document.querySelectorAll('section[id]')
+const scrollToTarget = (id) => { 
+  targetElement.forEach((element) => {
+    if (element.id === id) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  })
+}
