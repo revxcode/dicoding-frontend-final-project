@@ -15,9 +15,9 @@ const animateSlide = () => {
 
 animateSlide()
 
-// dynamic scroll
-const targetElement = document.querySelectorAll('section[id]')
+// dynamic scroll navigation
 const scrollToTarget = (id) => { 
+  const targetElement = document.querySelectorAll('section[id]')
   targetElement.forEach((element) => {
     if (element.id === id) {
       element.scrollIntoView({ behavior: 'smooth' })
